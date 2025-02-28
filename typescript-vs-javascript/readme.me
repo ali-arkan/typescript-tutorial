@@ -1,0 +1,46 @@
+Execution: 
+node .\compare-debugging-1.js -- js
+node .\compare-debugging-2.ts -- ts
+
+
+
+
+The error occurs because **Node.js does not support TypeScript syntax** (`: number` type annotations) by default. You need to **compile your TypeScript file to JavaScript first** or use `ts-node` to run it directly.
+
+### **Solution 1: Compile TypeScript to JavaScript First**
+1. Make sure TypeScript is installed:
+   ```sh
+   npm install -g typescript
+   ```
+2. Compile the TypeScript file:
+   ```sh
+   tsc test.ts
+   ```
+   This will generate a `test.js` file.
+3. Run the compiled JavaScript file:
+   ```sh
+   node test.js
+   ```
+
+---
+
+### **Solution 2: Use `ts-node` to Run TypeScript Directly**
+Instead of manually compiling, you can use `ts-node`, which allows you to run TypeScript files without compilation:
+
+1. Install `ts-node` globally:
+   ```sh
+   npm install -g ts-node
+   ```
+2. Run your TypeScript file with:
+   ```sh
+   ts-node test.ts
+   ```
+
+Or if you don’t want to install it globally, use `npx`:
+```sh
+npx ts-node test.ts
+```
+
+This should execute your TypeScript file without any syntax errors.
+
+Let me know if you need more help! 🚀
